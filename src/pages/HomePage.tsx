@@ -1,10 +1,10 @@
-import MoviesList from "../components/MoviesList"
-
 export default function Homepage() {
 
   return (
-    <>
-     <MoviesList />
-    </>
+    <div className="wrapper">
+      <h1>
+        HomePage
+      </h1>
+    </div>
   )
 }
