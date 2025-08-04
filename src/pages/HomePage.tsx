@@ -1,10 +1,10 @@
-import './App.css'
+import MoviesList from "../components/MoviesList"
 
 export default function Homepage() {
 
   return (
     <>
-     Homepage
+     <MoviesList />
     </>
   )
 }
