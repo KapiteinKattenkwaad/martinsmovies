@@ -1,53 +1,64 @@
-import fetchMovies from "../api/fetchMovies"
-
-import { useState, useEffect } from "react"
-
-import Filter from "./Filter"
-import MovieCard from "./MovieCard"
-import Pagination from "./Pagination"
-
-import type { Movies } from "../types/Movies"
+import MovieCard from "./MovieCard";
+import Pagination from "./Pagination";
+import Filter from "./Filter";
+import useMovies from "../hooks/useMovies";
 
 
 import { data } from "../api/testJson"
 
 export default function MoviesList() {
-  const [movies, setMovies] = useState<Movies>([])
 
-  const getMovies = async () => {
-    // const fetchedMovies = await fetchMovies()
-    const fetchedMovies = data?.results
+  const {
+    movies,
+    page,
+    setPage,
+    query,
+    setQuery,
+    totalPages,
+    loading,
+    error,
+    markWatched,
+    isWatched,
+  } = useMovies();
 
-    console.log(data)
-    //@ts-ignore
-    setMovies(fetchedMovies)
+  if (error) {
+    return (
+      <p>
+        Something went wrong. Please try again.
+        <br />
+        {error}
+      </p>
+    )
   }
 
-  useEffect(() => {
-    getMovies()
-    console.log({ movies })
-  }, [])
+  if (loading) {
+    return (
+      <div id="fullHeightLoader" className="d-flex justify-content-center align-items-center">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    )
+  }
+
 
   return (
     <main className="bg-light ptb100">
       <div className="container">
-        <Filter />
-
-      <div className="row">
-
-      {movies.length && (
-        <>
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        </>
-      )}
+        <Filter query={query} setQuery={setQuery} />
+        <div className="row">
+          {movies.slice(0, 6).map(movie => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              watched={isWatched(movie.id)}
+              onMarkWatched={() => markWatched(movie.id)}
+            />
+          ))
+          }
+        </div>
+        <Pagination page={page} setPage={setPage} totalPages={totalPages} />
       </div>
-      </div>
-      <Pagination />
     </main>
   )
 }

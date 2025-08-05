@@ -2,30 +2,33 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const apiKey = import.meta.env.VITE_MOVIES_TMDB_API_KEY;
 
 const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${apiKey}`
-  }
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${apiKey}`
+    }
 };
 
+export default async function fetchMovies({
+  page = 1,
+  query = "",
+}: { page?: number; query?: string }) {
 
-export default async function fetchMovies() {
     try {
+        const url = query
+            ? `${BASE_URL}/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}&page=${page}`
+            : `${BASE_URL}/movie/popular?api_key=${apiKey}&page=${page}&total_pages=6`;
 
-            const response = await fetch(
-                `${BASE_URL}/movie/changes?page=1'`,
-                options
-            );
-            if (!response.ok) {
-                throw new Error("Failed to fetch movies");
-            }
-
-            const data = await response.json();
-            return data.results;
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error("Failed to fetch movies");
         }
-    
-     catch (error) {
+
+        const data = await response.json();
+        return data;
+    }
+
+    catch (error) {
         console.error(error);
         return error;
     }
