@@ -5,8 +5,6 @@ import type { ExternalIds } from "../types/Types";
 export default function useMovie(movieId: number) {
     const [externalIds, setExternalIds] = useState<ExternalIds | null>(null);
     const [loading, setLoading] = useState<boolean>(false)
-    const [error, setError] = useState<boolean | string>(false)
-
 
     useEffect(() => { 
           if (!movieId) return;
@@ -15,14 +13,13 @@ export default function useMovie(movieId: number) {
             .then(data => {
                 setExternalIds(data)
             })
-            .catch((error) => setError(error))
+            .catch((error) => console.error(error))
             .finally(() => setLoading(false))
     }, [])
 
     return {
         externalIds,
-        loading,
-        error,
+        loading
     };
 
 }
