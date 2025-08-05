@@ -1,14 +1,10 @@
-
-
 interface PaginationProps {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   totalPages: number;
 }
 
-export default function Pagination
-  ({ page, setPage, totalPages }: PaginationProps) {
-
+export default function Pagination({ page, setPage, totalPages }: PaginationProps) {
   const pages = [];
   for (let i = Math.max(1, page - 1); i <= Math.min(totalPages, page + 2); i++) {
     pages.push(i);
@@ -16,9 +12,31 @@ export default function Pagination
 
   const scrollToMainSection = () => {
     const element = document.getElementById('main');
-    console.log('test', element)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Handle keyboard navigation for page buttons
+  const handlePageKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, pageNumber: number) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setPage(pageNumber);
+      scrollToMainSection();
+    }
+  };
+
+  // Handle keyboard navigation for previous/next buttons
+  const handleNavKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, direction: 'prev' | 'next') => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (direction === 'prev' && page > 1) {
+        setPage(page - 1);
+        scrollToMainSection();
+      } else if (direction === 'next' && page < totalPages) {
+        setPage(page + 1);
+        scrollToMainSection();
+      }
     }
   };
 
@@ -26,17 +44,23 @@ export default function Pagination
     <>
       <div className="row">
         <div className="col-md-12 col-sm-12">
-          <nav className="pagination">
-            <ul >
+          <nav className="pagination" role="navigation" aria-label="Pagination Navigation">
+            <ul>
               {page !== 1 && (
-                <li >
+                <li>
                   <button
-                    aria-label="Previous page"
-                    className="page-link" onClick={() => {
-                      scrollToMainSection()
-                      setPage(page - 1)
-                    }} disabled={page === 1}>
-                    <i className="fa fa-chevron-left"></i>
+                    aria-label="Go to previous page"
+                    className="page-link"
+                    onClick={() => {
+                      scrollToMainSection();
+                      setPage(page - 1);
+                    }}
+                    onKeyDown={(e) => handleNavKeyDown(e, 'prev')}
+                    disabled={page === 1}
+                    role="link"
+                    tabIndex={page === 1 ? -1 : 0}
+                  >
+                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
                   </button>
                 </li>
               )}
@@ -44,9 +68,10 @@ export default function Pagination
                 <li key={p}>
                   <button
                     onClick={() => {
-                      setPage(p)
-                      scrollToMainSection()
+                      setPage(p);
+                      scrollToMainSection();
                     }}
+                    onKeyDown={(e) => handlePageKeyDown(e, p)}
                     style={{
                       background: p === page ? "#8246af" : "transparent",
                       color: p === page ? "#fff" : "#333",
@@ -56,6 +81,9 @@ export default function Pagination
                     }}
                     disabled={p === page}
                     aria-current={p === page ? "page" : undefined}
+                    aria-label={p === page ? `Current page, page ${p}` : `Go to page ${p}`}
+                    role="link"
+                    tabIndex={p === page ? -1 : 0}
                   >
                     {p}
                   </button>
@@ -67,12 +95,15 @@ export default function Pagination
                   <button
                     className="page-link"
                     onClick={() => {
-                      scrollToMainSection()
-                      setPage(page + 1)
+                      scrollToMainSection();
+                      setPage(page + 1);
                     }}
-                    aria-label="Next page"
+                    onKeyDown={(e) => handleNavKeyDown(e, 'next')}
+                    aria-label="Go to next page"
+                    role="link"
+                    tabIndex={page >= totalPages ? -1 : 0}
                   >
-                    <i className="fa fa-chevron-right"></i>
+                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
                   </button>
                 </li>
               )}
@@ -80,7 +111,6 @@ export default function Pagination
           </nav>
         </div>
       </div>
-
     </>
-  )
+  );
 }
