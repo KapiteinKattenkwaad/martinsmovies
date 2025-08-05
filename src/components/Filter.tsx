@@ -1,7 +1,15 @@
-export default function Filter() {
+import type { Dispatch, SetStateAction } from "react";
+
+type FilterProps = {
+  query?: string;
+  setQuery: Dispatch<SetStateAction<string>>;
+};
+
+export default function Filter({ query, setQuery }: FilterProps) {
   return (
+
     <div className="row mb50">
-      <div className="col-md-6">
+      <div className="col-md-2">
         {/* Layout Switcher */}
         <div className="layout-switcher">
           <a href="/movie-list" className="list">
@@ -13,6 +21,17 @@ export default function Filter() {
         </div>
       </div>
       <div className="col-md-6">
+        <input
+        id="search"
+          name='keyword search'
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Search by keyword..."
+          className="form-control"
+        />
+      </div>
+      <div className="col-md-4">
         {/* Sort by */}
         <div className="sort-by">
           <div className="sort-by-select">
@@ -29,5 +48,6 @@ export default function Filter() {
         {/* Sort by / End */}
       </div>
     </div>
+
   );
 }

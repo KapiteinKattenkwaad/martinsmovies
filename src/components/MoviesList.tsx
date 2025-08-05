@@ -3,9 +3,6 @@ import Pagination from "./Pagination";
 import Filter from "./Filter";
 import useMovies from "../hooks/useMovies";
 
-
-import { data } from "../api/testJson"
-
 export default function MoviesList() {
 
   const {
@@ -31,23 +28,26 @@ export default function MoviesList() {
     )
   }
 
-  if (loading) {
-    return (
-      <div id="fullHeightLoader" className="d-flex justify-content-center align-items-center">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    )
-  }
-
 
   return (
-    <main className="bg-light ptb100">
+    <main id="main" className="bg-light ptb100">
       <div className="container">
         <Filter query={query} setQuery={setQuery} />
+        {loading && (
+          <div id="fullHeightLoader" className="d-flex justify-content-center align-items-center">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
+        {movies.length < 1 && (
+          <p>
+            No movies matched your search.
+            Please try a different search term.
+          </p>
+        )}
         <div className="row">
-          {movies.slice(0, 6).map(movie => (
+          {!loading && movies.slice(0, 6).map(movie => (
             <MovieCard
               key={movie.id}
               movie={movie}
