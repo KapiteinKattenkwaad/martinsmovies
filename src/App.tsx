@@ -1,5 +1,4 @@
 import MoviesList from './components/MoviesList'
-import './App.css'
 
 function App() {
 
