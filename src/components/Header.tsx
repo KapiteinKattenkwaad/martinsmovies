@@ -3,90 +3,90 @@ import "../styles/index.css"
 
 export default function Header() {
   return (
-    <header className="header">
+    <header className="header" role="banner">
       <div className="container-fluid">
         {/* ====== Start of Navbar ====== */}
-        <nav className="navbar navbar-expand-lg">
-          <a className="navbar-brand" href="/">
+        <nav className="navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
+          <a className="navbar-brand" href="/" aria-label="Movify home page">
             {/* INSERT YOUR LOGO HERE */}
             <img src={MovifyLogo} alt="logo" width={150} className="logo" />
             {/* If you have a white logo, import and use it here */}
             {/* <img src={MovifyLogoWhite} alt="white logo" width={150} className="logo-white" /> */}
           </a>
 
-          <button id="mobile-nav-toggler" className="hamburger hamburger--collapse" type="button">
+          <button id="mobile-nav-toggler" className="hamburger hamburger--collapse" type="button" aria-label="Open main menu" aria-expanded="false" aria-controls="main-nav">
             <span className="hamburger-box">
               <span className="hamburger-inner"></span>
             </span>
           </button>
 
           {/* ====== Start of #main-nav ====== */}
-          <div className="navbar-collapse" id="main-nav">
+          <div className="navbar-collapse" id="main-nav" role="menubar">
             {/* ====== Start of Main Menu ====== */}
-            <ul className="navbar-nav mx-auto" id="main-menu">
+            <ul className="navbar-nav mx-auto" id="main-menu" role="menu">
               {/* Home Dropdown */}
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <li className="nav-item dropdown" role="none">
+                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Home
                 </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="/">Home Version 1</a></li>
-                  <li><a className="dropdown-item" href="/index2">Home Version 2</a></li>
-                  <li><a className="dropdown-item" href="/index3">Home Version 3</a></li>
-                  <li><a className="dropdown-item" href="/index4">Home Version 4</a></li>
+                <ul className="dropdown-menu" role="menu">
+                  <li role="none"><a className="dropdown-item" href="/" role="menuitem">Home Version 1</a></li>
+                  <li role="none"><a className="dropdown-item" href="/index2" role="menuitem">Home Version 2</a></li>
+                  <li role="none"><a className="dropdown-item" href="/index3" role="menuitem">Home Version 3</a></li>
+                  <li role="none"><a className="dropdown-item" href="/index4" role="menuitem">Home Version 4</a></li>
                 </ul>
               </li>
               {/* Pages Dropdown */}
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <li className="nav-item dropdown" role="none">
+                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Pages
                 </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="/404">404 Page</a></li>
+                <ul className="dropdown-menu" role="menu">
+                  <li role="none"><a className="dropdown-item" href="/404" role="menuitem">404 Page</a></li>
                   <li className="divider" role="separator"></li>
-                  <li><a className="dropdown-item" href="/celebrities-list">Celebrities List</a></li>
-                  <li><a className="dropdown-item" href="/celebrities-grid">Celebrities Grid</a></li>
-                  <li><a className="dropdown-item" href="/celebrity-detail">Celebrity Detail</a></li>
+                  <li role="none"><a className="dropdown-item" href="/celebrities-list" role="menuitem">Celebrities List</a></li>
+                  <li role="none"><a className="dropdown-item" href="/celebrities-grid" role="menuitem">Celebrities Grid</a></li>
+                  <li role="none"><a className="dropdown-item" href="/celebrity-detail" role="menuitem">Celebrity Detail</a></li>
                   <li className="divider" role="separator"></li>
-                  <li><a className="dropdown-item" href="/contact-us">Contact Us</a></li>
-                  <li><a className="dropdown-item" href="/coming-soon">Coming Soon</a></li>
-                  <li><a className="dropdown-item" href="/pricing">Pricing Plan</a></li>
-                  <li><a className="dropdown-item" href="/login-register">Login - Register</a></li>
-                  <li><a className="dropdown-item" href="/testimonials">Testimonials</a></li>
+                  <li role="none"><a className="dropdown-item" href="/contact-us" role="menuitem">Contact Us</a></li>
+                  <li role="none"><a className="dropdown-item" href="/coming-soon" role="menuitem">Coming Soon</a></li>
+                  <li role="none"><a className="dropdown-item" href="/pricing" role="menuitem">Pricing Plan</a></li>
+                  <li role="none"><a className="dropdown-item" href="/login-register" role="menuitem">Login - Register</a></li>
+                  <li role="none"><a className="dropdown-item" href="/testimonials" role="menuitem">Testimonials</a></li>
                 </ul>
               </li>
               {/* Movies & TV Shows Dropdown */}
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <li className="nav-item dropdown" role="none">
+                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Movies &amp; TV Shows
                 </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="/movie-list">Movie List 1</a></li>
-                  <li><a className="dropdown-item" href="/movie-list2">Movie List 2</a></li>
-                  <li><a className="dropdown-item" href="/movie-grid">Movie Grid 1</a></li>
-                  <li><a className="dropdown-item" href="/movie-grid2">Movie Grid 2</a></li>
-                  <li><a className="dropdown-item" href="/movie-grid3">Movie Grid 3</a></li>
-                  <li><a className="dropdown-item" href="/movie-grid4">Movie Grid 4</a></li>
-                  <li><a className="dropdown-item" href="/movie-detail">Movie Detail</a></li>
-                  <li><a className="dropdown-item" href="/movie-detail2">Movie Detail 2</a></li>
-                  <li><a className="dropdown-item" href="/watch-later">Watch Later</a></li>
+                <ul className="dropdown-menu" role="menu">
+                  <li role="none"><a className="dropdown-item" href="/movie-list" role="menuitem">Movie List 1</a></li>
+                  <li role="none"><a className="dropdown-item" href="/movie-list2" role="menuitem">Movie List 2</a></li>
+                  <li role="none"><a className="dropdown-item" href="/movie-grid" role="menuitem">Movie Grid 1</a></li>
+                  <li role="none"><a className="dropdown-item" href="/movie-grid2" role="menuitem">Movie Grid 2</a></li>
+                  <li role="none"><a className="dropdown-item" href="/movie-grid3" role="menuitem">Movie Grid 3</a></li>
+                  <li role="none"><a className="dropdown-item" href="/movie-grid4" role="menuitem">Movie Grid 4</a></li>
+                  <li role="none"><a className="dropdown-item" href="/movie-detail" role="menuitem">Movie Detail</a></li>
+                  <li role="none"><a className="dropdown-item" href="/movie-detail2" role="menuitem">Movie Detail 2</a></li>
+                  <li role="none"><a className="dropdown-item" href="/watch-later" role="menuitem">Watch Later</a></li>
                 </ul>
               </li>
               {/* Blog Dropdown */}
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <li className="nav-item dropdown" role="none">
+                <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Blog
                 </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="/blog-list">Blog List</a></li>
-                  <li><a className="dropdown-item" href="/blog-list-fullwidth">Blog List Fullwidth</a></li>
-                  <li><a className="dropdown-item" href="/blog-post-detail">Blog Detail</a></li>
-                  <li><a className="dropdown-item" href="/blog-post-detail-fullwidth">Blog Detail Fullwidth</a></li>
+                <ul className="dropdown-menu" role="menu">
+                  <li role="none"><a className="dropdown-item" href="/blog-list" role="menuitem">Blog List</a></li>
+                  <li role="none"><a className="dropdown-item" href="/blog-list-fullwidth" role="menuitem">Blog List Fullwidth</a></li>
+                  <li role="none"><a className="dropdown-item" href="/blog-post-detail" role="menuitem">Blog Detail</a></li>
+                  <li role="none"><a className="dropdown-item" href="/blog-post-detail-fullwidth" role="menuitem">Blog Detail Fullwidth</a></li>
                 </ul>
               </li>
               {/* Contact Us */}
-              <li className="nav-item">
-                <a className="nav-link" href="/contact-us">Contact Us</a>
+              <li className="nav-item" role="none">
+                <a className="nav-link" href="/contact-us" role="menuitem">Contact Us</a>
               </li>
             </ul>
             {/* ====== End of Main Menu ====== */}
@@ -94,18 +94,18 @@ export default function Header() {
             {/* ====== Start of Extra Nav ====== */}
             <ul className="navbar-nav extra-nav">
               <li className="nav-item">
-                <a className="nav-link toggle-search" href="#">
+                <a className="nav-link toggle-search" href="#" aria-label="Open search">
                   <i className="fa fa-search"></i>
                 </a>
               </li>
               <li className="nav-item notification-wrapper">
-                <a className="nav-link notification" href="#">
+                <a className="nav-link notification" href="#" aria-label="Notifications">
                   <i className="fa fa-globe"></i>
                   <span className="notification-count">2</span>
                 </a>
               </li>
               <li className="nav-item m-auto">
-                <a href="#login-register-popup" className="btn btn-main btn-effect login-btn popup-with-zoom-anim">
+                <a href="#login-register-popup" className="btn btn-main btn-effect login-btn popup-with-zoom-anim" aria-label="Login">
                   <i className="icon-user"></i>login
                 </a>
               </li>

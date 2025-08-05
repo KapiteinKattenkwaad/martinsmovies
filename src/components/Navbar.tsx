@@ -1,5 +1,3 @@
-import React from "react";
-
 const menu = [
   {
     label: "Home",
@@ -60,28 +58,35 @@ export default function Navbar() {
     <nav
       id="main-mobile-nav"
       className="mm-menu mm-menu_offcanvas mm-menu_fx-menu-zoom mm-menu_position-right"
-      aria-hidden="true"
+      aria-label="Main navigation menu"
+      role="navigation"
     >
-      <ul className="mmenu-init">
-        {menu.map((menuItem, idx) =>
+      <ul className="mmenu-init" role="menubar">
+        {menu.map((menuItem) =>
           menuItem.items ? (
-            <li key={menuItem.label}>
-              <a href="#">{menuItem.label}</a>
-              <ul>
+            <li key={menuItem.label} role="none">
+              <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                {menuItem.label}
+              </a>
+              <ul role="menu">
                 {menuItem.items.map((item, subIdx) =>
                   item.divider ? (
                     <li key={subIdx} role="separator" />
                   ) : (
-                    <li key={item.label}>
-                      <a href={item.href}>{item.label}</a>
+                    <li key={item.label} role="none">
+                      <a href={item.href} role="menuitem">
+                        {item.label}
+                      </a>
                     </li>
                   )
                 )}
               </ul>
             </li>
           ) : (
-            <li key={menuItem.label}>
-              <a href={menuItem.href}>{menuItem.label}</a>
+            <li key={menuItem.label} role="none">
+              <a href={menuItem.href} role="menuitem">
+                {menuItem.label}
+              </a>
             </li>
           )
         )}

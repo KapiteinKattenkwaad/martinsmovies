@@ -10,16 +10,20 @@ export default function PageHeader() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      role="banner"
+      aria-label="Page header with breadcrumb navigation"
     >
       <div className="container">
         <div className="inner">
           <h2 className="title">Movie Grid 3</h2>
-          <ol className="breadcrumb">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>Movie Grid 3</li>
-          </ol>
+          <nav aria-label="Breadcrumb">
+            <ol className="breadcrumb">
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li aria-current="page">Movie Grid 3</li>
+            </ol>
+          </nav>
         </div>
       </div>
     </section>
