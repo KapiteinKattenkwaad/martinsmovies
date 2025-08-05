@@ -1,53 +1,111 @@
-# React + TypeScript + Vite
+# Martin's Movies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based movie discovery app that lets you search for movies and track which ones you've watched. Built with TypeScript, Vite, and The Movie Database (TMDB) API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Search Movies**: Search for movies by keywords
+- 📋 **Browse Popular**: View popular movies when no search is active
+- ✅ **Track Watched**: Mark movies as watched and keep track locally
+- 📄 **Pagination**: Navigate through multiple pages of results
+- 🎨 **Responsive Design**: Works on desktop and mobile devices
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── api/                 # API calls to TMDB
+│   ├── fetchMovies.ts   # Main movie fetching logic
+│   └── fetchExternalIds.ts
+├── components/          # React components
+│   ├── MoviesList.tsx   # Main movies display
+│   ├── MovieCard.tsx    # Individual movie card
+│   ├── Filter.tsx       # Search input
+│   ├── Pagination.tsx   # Page navigation
+│   ├── Header.tsx       # Site header
+│   ├── Navbar.tsx       # Navigation bar
+│   └── Footer.tsx       # Site footer
+├── hooks/               # Custom React hooks
+│   ├── useMovies.ts     # Main movies state management
+│   ├── useMovie.ts      # Single movie logic
+│   └── useDebouncer.ts  # Search debouncing
+├── types/               # TypeScript type definitions
+│   └── Types.ts         # Movie and API types
+├── utils/               # Utility functions
+│   └── watchedMovies.ts # Local storage for watched movies
+└── styles/              # CSS styling files
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Setup Instructions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config([
-  globalIgnores(['dist']),
+- Node.js (version 16 or higher)
+- npm or yarn
+- TMDB API key (free from [themoviedb.org](https://www.themoviedb.org/settings/api))
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd martinsmovies
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` and add your TMDB API key:
+   ```
+   VITE_MOVIES_TMDB_API_KEY="your_api_key_here"
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## How It Works
+
+1. **Search**: Type in the search box to find movies by keywords
+2. **Browse**: Without a search term, the app shows popular movies
+3. **Watch Status**: Click the watch button on any movie card to mark it as watched
+4. **Pagination**: Use the pagination controls to browse through results
+5. **Local Storage**: Your watched movies are saved locally in your browser
+
+## Technologies Used
+
+- **React 19** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **TMDB API** - Movie data source
+- **Bootstrap** - CSS framework for styling
+- **Local Storage** - Persistent watched movies tracking
+
+## API Integration
+
+The app uses The Movie Database (TMDB) API to:
+- Search for movies by keywords
+- Fetch popular movies
+- Get detailed movie information
+- Retrieve movie posters and metadata
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
