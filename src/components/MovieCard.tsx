@@ -1,71 +1,79 @@
-import type { Movie } from "../types/Movies";
+import type { Movie } from "../types/Types";
+import { extractGenres } from "../utils/genres";
+import useMovie from "../hooks/useMovie";
 
-const testMovie: Movie = {
-  image: "https://gnodesign.com/templates/movify/assets/images/posters/poster-1.jpg",
-  title: "Star Wars",
-  rating: 7.5,
-  category: "Action, Fantasy",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam...",
-  detailsUrl: "/movie-detail",
-  trailerUrl: "https://www.youtube.com/watch?v=Q0CbN8sfihY",
-  id: 1,
-  overview: "",
-  poster_path: "",
-  release_date: "",
-  vote_average: 7.5,
-};
 
-export default function MovieCard({ movie = testMovie }: { movie?: Movie }) {
+export default function MovieCard({ movie, watched, onMarkWatched }: { movie: Movie, watched: boolean, onMarkWatched: () => void }) {
+
   const {
-    image,
+    id,
     title,
-    rating,
-    category,
-    description,
-    detailsUrl,
-    trailerUrl,
+    vote_average,
+    overview,
+    poster_path,
+    genre_ids
   } = movie;
+
+
+  const {
+    loading,
+    error,
+    externalIds
+  } = useMovie(id);
+
+  console.log({loading, error, externalIds})
+
+  const imagePoster = poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : 'https://dummyjson.com/image/150?text=No+image+found'
+  const genres = extractGenres(genre_ids).join(", ");
+  const descriptionEllipse = overview.length > 150 ? overview.slice(0, 150) + '...' : overview
+  const imdbLink = externalIds ? externalIds?.imdb_id : null;
 
   return (
     <div className="col-lg-4 col-md-6 col-sm-12">
-      <a href="#">
-        <div className="movie-box-3 mb30">
-          <div className="listing-container">
-            <div className="listing-image">
-              <img src={image} alt={title} />
-            </div>
-            <div className="listing-content">
-              <div className="inner">
-                {/* Play Button */}
-                <div className="play-btn">
-                  <a
+      <div className="movie-box-3 mb30">
+        <div className="listing-container">
+          <div className="listing-image">
+            <img src={imagePoster} alt={title} />
+          </div>
+          <div className="listing-content">
+            <div className="inner">
+              {id}
+              {/* Play Button */}
+              <div className="play-btn">
+                {/* <a
                     href={trailerUrl}
                     className="play-video"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <i className="fa fa-play"></i>
-                  </a>
-                </div>
-                <h2 className="title">{title}</h2>
-                {/* Rating */}
-                <div className="stars">
-                  <div className="rating">
-                    <i className="fa fa-star"></i>
-                    <span>{rating}/10</span>
-                    <span className="category">{category}</span>
-                  </div>
-                </div>
-                <p>{description}</p>
-                <a href={detailsUrl} className="btn btn-main btn-effect">
-                  details
-                </a>
+                  </a> */}
               </div>
+              <h2 className="title">{title}</h2>
+              {/* Rating */}
+              <div className="stars">
+                <div className="rating">
+                  <i className="fa fa-star"></i>
+                  <span>{vote_average.toFixed(1)}/10</span>
+                  <span className="category">{genres}</span>
+                </div>
+              </div>
+              <p>{descriptionEllipse}</p>
+              {imdbLink && (
+              <a target="_blank" href={`https://www.imdb.com/title/${imdbLink}/`} className="btn btn-main btn-effect">
+                IMDB Link
+              </a>
+              )}
+              <button
+                className={`btn ml-4 ${watched ? "btn btn-effect" : "btn-outline-primary"}`}
+                onClick={onMarkWatched}
+              >
+                {watched ? "Watched" : "Mark as Watched"}
+              </button>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     </div>
   );
 }
