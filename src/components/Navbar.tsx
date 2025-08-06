@@ -57,7 +57,7 @@ export default function Navbar() {
   return (
     <nav
       id="main-mobile-nav"
-      className="mm-menu mm-menu_offcanvas mm-menu_fx-menu-zoom mm-menu_position-right"
+      className="mobile-nav-hidden"
       aria-label="Main navigation menu"
       role="navigation"
     >
