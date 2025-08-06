@@ -93,7 +93,7 @@ export default function Header() {
               </li>
               <li className="nav-item m-auto">
                 <a href="#login-register-popup" className="btn btn-main btn-effect login-btn popup-with-zoom-anim" aria-label="Login">
-                  <i className="icon-user"></i>login
+                <i className="fa fa-user"></i>login
                 </a>
               </li>
             </ul>
