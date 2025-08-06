@@ -9,7 +9,7 @@ export default function Homepage() {
 
   return (
     <div className="wrapper">
-      {/* <Navbar /> */}
+      <Navbar />
       <Header />
       <PageHeader />
       <MoviesList />
