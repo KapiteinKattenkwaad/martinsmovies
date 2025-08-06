@@ -57,17 +57,7 @@ export default function MovieCard({ movie, watched, onMarkWatched }: { movie: Mo
           </div>
           <div className="listing-content">
             <div className="inner">
-              {/* Play Button */}
-               {/* <div className="play-btn">
-                 <a
-                    href={trailerUrl}
-                    className="play-video"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fa fa-play"></i>
-                  </a> 
-              </div>  */}
+              {/* TODO Play Button */}
               <h2 className="title">{title}</h2>
               <div className="stars">
                 <div className="rating">

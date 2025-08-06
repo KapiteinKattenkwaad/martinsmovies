@@ -4,7 +4,6 @@ import PageHeader from "../components/PageHeader"
 import MoviesList from "../components/MoviesList"
 import Footer from "../components/Footer"
 
-
 export default function Homepage() {
 
   return (

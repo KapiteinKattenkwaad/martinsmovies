@@ -3,9 +3,7 @@ import MoviesList from './components/MoviesList'
 function App() {
 
   return (
-    <>
-      <MoviesList />
-    </>
+    <MoviesList />
   )
 }
 
