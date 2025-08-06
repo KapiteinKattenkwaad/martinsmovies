@@ -4353,7 +4353,9 @@ ul.blog-posts-widget .blog-content .blog-text span {
 }
 
 .movie-box-3 .listing-image img {
-    width: 100%
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
 }
 
 .movie-box-3 .listing-content {

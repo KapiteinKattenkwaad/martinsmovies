@@ -39,7 +39,7 @@ export default function MovieCard({ movie, watched, onMarkWatched }: { movie: Mo
       <div tabIndex={0} className="movie-box-3 mb30">
         <div className="listing-container">
           <div className="listing-image">
-            <img src={imagePoster} alt={title} />
+            <img width="290" height="350" src={imagePoster} alt={title} />
           </div>
           <div
             onClick={onMarkWatched}
