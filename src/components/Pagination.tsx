@@ -66,8 +66,9 @@ export default function Pagination({ page, setPage, totalPages }: PaginationProp
                 <li key={p}>
                   <button
                     onClick={() => {
-                      scrollToMainSection();
                       setPage(p);
+                      // Scroll to main section after rerender
+                      setTimeout(() => scrollToMainSection(), 0);
                     }}
                     onKeyDown={(e) => handlePageKeyDown(e, p)}
                     style={{
