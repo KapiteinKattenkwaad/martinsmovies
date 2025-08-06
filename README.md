@@ -48,7 +48,7 @@ src/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/KapiteinKattenkwaad/martinsmovies.git
    cd martinsmovies
    ```
 
@@ -81,6 +81,7 @@ src/
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+- `npm run test` - Run Tests
 
 ## How It Works
 
@@ -106,22 +107,11 @@ The app uses The Movie Database (TMDB) API to:
 - Fetch popular movies
 - Get detailed movie information
 - Retrieve movie posters and metadata
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+## TODOS
+
+- Make sorting work
+- Make grid layout change work
+- Add movie details page
+- Add YouTube trailer player
+- Add in missing links (e.g.: Homepage)
