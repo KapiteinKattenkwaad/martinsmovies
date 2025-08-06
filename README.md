@@ -2,6 +2,8 @@
 
 A React-based movie discovery app that lets you search for movies and track which ones you've watched. Built with TypeScript, Vite, and The Movie Database (TMDB) API.
 
+Check it out at [martinsmovies](https://martinmovies.netlify.app/)
+
 ## Features
 
 - 🔍 **Search Movies**: Search for movies by keywords
@@ -40,8 +42,8 @@ src/
 
 ### Prerequisites
 
-- Node.js (version 16 or higher)
-- npm or yarn
+- Node.js (version 18 or higher)
+- npm
 - TMDB API key (free from [themoviedb.org](https://www.themoviedb.org/settings/api))
 
 ### Installation
