@@ -3,7 +3,7 @@ import fetchMovies from '../api/fetchMovies'
 import { searchKeywords } from '../api/fetchMovies';
 import { useDebounce } from "./useDebouncer";
 import { getWatched, markWatched } from "../utils/watchedMovies";
-import type { Movie } from "../types/Types"
+import type { Movie, Keyword } from "../types/Types"
 
 export default function useMovies() {
     const [movies, setMovies] = useState<Movie[]>([])
@@ -20,7 +20,7 @@ export default function useMovies() {
         if (debouncedQuery) {
             setLoading(true);
             searchKeywords(debouncedQuery)
-                .then((results: string | any[]) => {
+                .then((results: Keyword[]) => {
                     if (results.length > 0) {
                         setKeywordId(results[0].id);
                     } else {
