@@ -9,7 +9,6 @@ export default function Filter({ query, setQuery }: FilterProps) {
   return (
     <div className="row mb50">
       <div className="col-md-2">
-        {/* Layout Switcher */}
         <div className="layout-switcher" role="radiogroup" aria-label="Layout options">
           <a href="/movie-list" className="list" role="radio" aria-checked="false" tabIndex={0}>
             <i className="fa fa-align-justify" aria-hidden="true"></i>
@@ -35,7 +34,6 @@ export default function Filter({ query, setQuery }: FilterProps) {
         />
       </div>
       <div className="col-md-4">
-        {/* Sort by */}
         <div className="sort-by">
           <label htmlFor="sort-select" className="sr-only">Sort movies by</label>
           <div className="sort-by-select">
@@ -54,7 +52,6 @@ export default function Filter({ query, setQuery }: FilterProps) {
             </select>
           </div>
         </div>
-        {/* Sort by / End */}
       </div>
     </div>
   );

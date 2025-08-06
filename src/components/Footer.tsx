@@ -4,7 +4,6 @@ import MovifyLogoWhite from "../assets/logo-white.svg";
 export default function Footer() {
   return (
     <footer className="footer1 bg-dark">
-      {/* ===== START OF FOOTER WIDGET AREA ===== */}
       <div className="footer-widget-area ptb100">
         <div className="container">
           <div className="row">
@@ -86,9 +85,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      {/* ===== END OF FOOTER WIDGET AREA ===== */}
 
-      {/* ===== START OF FOOTER COPYRIGHT AREA ===== */}
       <div className="footer-copyright-area ptb30">
         <div className="container">
           <div className="row">
@@ -110,7 +107,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      {/* ===== END OF FOOTER COPYRIGHT AREA ===== */}
     </footer>
   );
 }

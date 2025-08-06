@@ -5,13 +5,9 @@ export default function Header() {
   return (
     <header className="header" role="banner">
       <div className="container-fluid">
-        {/* ====== Start of Navbar ====== */}
         <nav className="navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
           <a className="navbar-brand" href="/" aria-label="Movify home page">
-            {/* INSERT YOUR LOGO HERE */}
             <img src={MovifyLogo} alt="logo" width={150} className="logo" />
-            {/* If you have a white logo, import and use it here */}
-            {/* <img src={MovifyLogoWhite} alt="white logo" width={150} className="logo-white" /> */}
           </a>
 
           <button id="mobile-nav-toggler" className="hamburger hamburger--collapse" type="button" aria-label="Open main menu" aria-expanded="false" aria-controls="main-nav">
@@ -20,11 +16,8 @@ export default function Header() {
             </span>
           </button>
 
-          {/* ====== Start of #main-nav ====== */}
           <div className="navbar-collapse" id="main-nav" role="menubar">
-            {/* ====== Start of Main Menu ====== */}
             <ul className="navbar-nav mx-auto" id="main-menu" role="menu">
-              {/* Home Dropdown */}
               <li className="nav-item dropdown" role="none">
                 <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Home
@@ -36,7 +29,6 @@ export default function Header() {
                   <li role="none"><a className="dropdown-item" href="/index4" role="menuitem">Home Version 4</a></li>
                 </ul>
               </li>
-              {/* Pages Dropdown */}
               <li className="nav-item dropdown" role="none">
                 <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Pages
@@ -55,7 +47,6 @@ export default function Header() {
                   <li role="none"><a className="dropdown-item" href="/testimonials" role="menuitem">Testimonials</a></li>
                 </ul>
               </li>
-              {/* Movies & TV Shows Dropdown */}
               <li className="nav-item dropdown" role="none">
                 <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Movies &amp; TV Shows
@@ -72,7 +63,6 @@ export default function Header() {
                   <li role="none"><a className="dropdown-item" href="/watch-later" role="menuitem">Watch Later</a></li>
                 </ul>
               </li>
-              {/* Blog Dropdown */}
               <li className="nav-item dropdown" role="none">
                 <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                   Blog
@@ -84,14 +74,11 @@ export default function Header() {
                   <li role="none"><a className="dropdown-item" href="/blog-post-detail-fullwidth" role="menuitem">Blog Detail Fullwidth</a></li>
                 </ul>
               </li>
-              {/* Contact Us */}
               <li className="nav-item" role="none">
                 <a className="nav-link" href="/contact-us" role="menuitem">Contact Us</a>
               </li>
             </ul>
-            {/* ====== End of Main Menu ====== */}
 
-            {/* ====== Start of Extra Nav ====== */}
             <ul className="navbar-nav extra-nav">
               <li className="nav-item">
                 <a className="nav-link toggle-search" href="#" aria-label="Open search">
@@ -110,11 +97,8 @@ export default function Header() {
                 </a>
               </li>
             </ul>
-            {/* ====== End of Extra Nav ====== */}
           </div>
-          {/* ====== End of #main-nav ====== */}
         </nav>
-        {/* ====== End of Navbar ====== */}
       </div>
     </header>
   );

@@ -28,7 +28,6 @@ export default function MoviesList() {
     )
   }
 
-
   return (
     <main id="main" className="bg-light ptb100">
       <div className="container">

@@ -17,7 +17,6 @@ export default function Pagination({ page, setPage, totalPages }: PaginationProp
     }
   };
 
-  // Handle keyboard navigation for page buttons
   const handlePageKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, pageNumber: number) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -26,7 +25,6 @@ export default function Pagination({ page, setPage, totalPages }: PaginationProp
     }
   };
 
-  // Handle keyboard navigation for previous/next buttons
   const handleNavKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, direction: 'prev' | 'next') => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -68,8 +66,8 @@ export default function Pagination({ page, setPage, totalPages }: PaginationProp
                 <li key={p}>
                   <button
                     onClick={() => {
-                      setPage(p);
                       scrollToMainSection();
+                      setPage(p);
                     }}
                     onKeyDown={(e) => handlePageKeyDown(e, p)}
                     style={{
