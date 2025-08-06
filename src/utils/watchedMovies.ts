@@ -9,7 +9,7 @@ export function markWatched(id: number) {
   if (!watched.includes(id)) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...watched, id]));
   } else {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify([...watched.filter(watchedId => watchedId !== id)]));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...watched.filter(watchedId => watchedId !== id)]));
   }
 }
 
