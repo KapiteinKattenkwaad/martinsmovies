@@ -25,3 +25,8 @@ export type ExternalIds = {
   twitter_id: string | null;
   wikidata_id: string | null;
 }
+
+export type Keyword = {
+  id: number;
+  name: string;
+}
