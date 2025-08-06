@@ -31,6 +31,10 @@ html {
     background: #fff
 }
 
+a, button {
+    width: fit-content;
+}
+
 .img-box,
 .parallax,
 html,
@@ -4384,7 +4388,8 @@ ul.blog-posts-widget .blog-content .blog-text span {
 
 .movie-box-3 .listing-content {
     position: relative;
-    padding: 30px
+    padding: 30px;
+    min-height: 435px;
 }
 
 .movie-box-3 .play-btn {
@@ -4403,7 +4408,14 @@ ul.blog-posts-widget .blog-content .blog-text span {
     min-height: 72px;
     padding: 0;
     font-size: 1.9em;
-    font-weight: 500
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    box-orient: vertical;
+    overflow: hidden;
+    width: 300px;
 }
 
 .movie-box-3 .stars {
